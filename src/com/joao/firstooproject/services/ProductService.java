@@ -33,7 +33,7 @@ public class ProductService {
         }
 
     }
-    
+
     public Optional<Product> getProductByCode(String code) {
         for (Product product : database.getProducts()) {
             if (product.getCode().equalsIgnoreCase(code)) {
