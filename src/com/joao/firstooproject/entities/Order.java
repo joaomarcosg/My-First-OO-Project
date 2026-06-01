@@ -6,6 +6,8 @@ public class Order {
     private Product product;
     private double total;
 
+    public Order() {}
+
     public Order(String code, Client client, Product product, double total) {
         this.code = code;
         this.client = client;
