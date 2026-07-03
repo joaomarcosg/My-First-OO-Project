@@ -2,6 +2,8 @@ package com.joao.firstooproject.entities;
 
 import com.joao.firstooproject.constants.Genre;
 
+import java.util.Objects;
+
 public class Book extends Product{
     private String name;
     private Genre genre;
@@ -28,5 +30,17 @@ public class Book extends Product{
                 "name='" + name + '\'' +
                 ", genre=" + genre +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(name, book.name) && genre == book.genre;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, genre);
     }
 }
