@@ -35,20 +35,14 @@ public class ProductService {
     }
 
     public void delete(String code) {
-        int position = -1;
-        for (int i = 0; i < database.getProducts().length; i++) {
-            Product product = database.getProducts()[i];
-            if (product.getCode().equals(code)) {
-                position = i;
-                break;
-            }
-        }
+        Optional<Product> productOpt = getProductByCode(code);
 
-        if (position != -1) {
-            database.removeProduct(position);
+        if (productOpt.isPresent()) {
+            Product productToDelete = productOpt.get();
+            database.removeProduct(productToDelete);
             System.out.println("Product removed successfully");
         } else {
-            System.out.println("Product do not exists");
+            System.out.println("Product does not exists");
         }
     }
 

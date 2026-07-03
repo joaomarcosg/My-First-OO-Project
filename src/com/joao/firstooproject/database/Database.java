@@ -48,7 +48,7 @@ public class Database {
     public void removeProduct(int position) {
         products.remove(position);
     }
-    
+
     public void removeProduct(Product product) {this.products.remove(product);}
 
     public void addOrder(Order order) {
