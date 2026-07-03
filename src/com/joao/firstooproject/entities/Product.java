@@ -1,5 +1,7 @@
 package com.joao.firstooproject.entities;
 
+import java.util.Objects;
+
 public abstract class Product {
     private String code;
     private double price;
@@ -29,5 +31,17 @@ public abstract class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(code, product.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(code);
     }
 }
