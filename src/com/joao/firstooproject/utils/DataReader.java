@@ -60,7 +60,7 @@ public final class DataReader {
                 String quantity = readData();
                 product.setQuantity(Integer.parseInt(quantity));
 
-                order.setProduct(product);
+                order.getProducts().add(product);
             } else {
                 System.out.println("Invalid product code. Choose a valid product code");
             }
