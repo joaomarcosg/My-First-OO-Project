@@ -1,18 +1,16 @@
 package com.joao.firstooproject.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Order {
     private String code;
     private Client client;
-    private Product product;
+    private List<Product> products;
     private double total;
 
-    public Order() {}
-
-    public Order(String code, Client client, Product product, double total) {
-        this.code = code;
-        this.client = client;
-        this.product = product;
-        this.total = total;
+    public Order() {
+        this.products = new ArrayList<>();
     }
 
     public String getCode() {
@@ -31,12 +29,12 @@ public class Order {
         this.client = client;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(List<Product> products) {
+        this.products = products;
     }
 
     public double getTotal() {
@@ -45,5 +43,29 @@ public class Order {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    private String getPurchasedOrders() {
+        StringBuilder products = new StringBuilder();
+        products.append("[");
+        for (Product product : getProducts()) {
+            products.append(product.toString());
+            products.append("Qtd:");
+            products.append(product.getQuantity());
+            products.append(" ");
+        }
+        products.append("]");
+
+        return products.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "code='" + code + '\'' +
+                ", client=" + client +
+                ", products=" + getPurchasedOrders() +
+                ", total=" + total +
+                '}';
     }
 }
