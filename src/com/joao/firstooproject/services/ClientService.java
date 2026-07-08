@@ -4,6 +4,7 @@ import com.joao.firstooproject.database.Database;
 import com.joao.firstooproject.entities.Client;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class ClientService {
     private Database database;
@@ -12,11 +13,23 @@ public class ClientService {
         this.database = database;
     }
 
-    public Optional<Client> getClientByCpf(String cpf) {
-        if (database.getClient().getCpf().equals(cpf)) {
-            return Optional.of(database.getClient());
+    public void save(Client client) {
+        Optional<Client> clientOpt = getClientByCpf(client.getCpf());
+
+        if (clientOpt.isPresent()) {
+            System.out.println("Client already exists");
         } else {
-            return Optional.empty();
+            this.database.addClients(client);
+            System.out.println("Client added successfully");
         }
+    }
+
+    public Optional<Client> getClientByCpf(String cpf) {
+        for (Client client : database.getClients()) {
+            if (client.getCpf().equals(cpf)) {
+                return Optional.of(client);
+            }
+        }
+        return Optional.empty();
     }
 }
