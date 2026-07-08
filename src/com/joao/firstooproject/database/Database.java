@@ -28,9 +28,12 @@ public class Database {
     public Client[] getClients() {
         return clients.toArray(new Client[clients.size()]);
     }
-
-    public void addClients(Client client) {
+    public void addClient(Client client) {
         clients.add(client);
+    }
+    
+    public void removeClient(Client client) {
+        this.clients.remove(client);
     }
 
     public Coupon[] getCoupons() {
