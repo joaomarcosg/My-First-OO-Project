@@ -26,7 +26,11 @@ public class Database {
     }
 
     public Client getClient() {
-        return client;
+        return this.client;
+    }
+
+    public void addClient(Client client) {
+        this.client = client;
     }
 
     public Coupon[] getCoupons() {
