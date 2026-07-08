@@ -12,12 +12,12 @@ public class Database {
     private List<Product> products;
     private List<Order> orders;
     private List<Coupon> coupons;
-    private Client client;
+    private List<Client> clients;
 
     public Database() {
         this.products = new ArrayList<>();
         this.orders = new ArrayList<>();
-        this.client = new Client();
+        this.clients = new ArrayList<>();
 
         this.coupons = new ArrayList<>();
         coupons.add(new Coupon("COUPON2", 2));
@@ -25,12 +25,12 @@ public class Database {
         coupons.add(new Coupon("COUPON7", 7));
     }
 
-    public Client getClient() {
-        return this.client;
+    public Client[] getClient() {
+        return clients.toArray(new Client[clients.size()]);
     }
 
     public void addClient(Client client) {
-        this.client = client;
+        clients.add(client);
     }
 
     public Coupon[] getCoupons() {
