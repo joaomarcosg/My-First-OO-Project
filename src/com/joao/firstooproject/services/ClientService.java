@@ -19,7 +19,7 @@ public class ClientService {
         if (clientOpt.isPresent()) {
             System.out.println("Client already exists");
         } else {
-            this.database.addClients(client);
+            this.database.addClient(client);
             System.out.println("Client added successfully");
         }
     }
@@ -31,5 +31,17 @@ public class ClientService {
             }
         }
         return Optional.empty();
+    }
+
+    public void delete(String cpf) {
+        Optional<Client> clientOpt = getClientByCpf(cpf);
+
+        if (clientOpt.isPresent()) {
+            Client clientToDelete = clientOpt.get();
+            database.removeClient(clientToDelete);
+            System.out.println("Client deleted successfully");
+        } else {
+            System.out.println("Client does not exists");
+        }
     }
 }
