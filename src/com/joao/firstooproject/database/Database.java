@@ -25,11 +25,11 @@ public class Database {
         coupons.add(new Coupon("COUPON7", 7));
     }
 
-    public Client[] getClient() {
+    public Client[] getClients() {
         return clients.toArray(new Client[clients.size()]);
     }
 
-    public void addClient(Client client) {
+    public void addClients(Client client) {
         clients.add(client);
     }
 
