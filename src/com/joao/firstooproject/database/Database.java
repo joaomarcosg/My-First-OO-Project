@@ -31,7 +31,7 @@ public class Database {
     public void addClient(Client client) {
         clients.add(client);
     }
-    
+
     public void removeClient(Client client) {
         this.clients.remove(client);
     }
