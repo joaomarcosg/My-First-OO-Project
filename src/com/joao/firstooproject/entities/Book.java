@@ -33,6 +33,11 @@ public class Book extends Product{
     }
 
     @Override
+    public double calculateShipping() {
+        return 10.00;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
