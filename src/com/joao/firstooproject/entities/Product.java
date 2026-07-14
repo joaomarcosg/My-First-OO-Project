@@ -33,6 +33,8 @@ public abstract class Product {
         this.quantity = quantity;
     }
 
+    public abstract double calculateShipping();
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
