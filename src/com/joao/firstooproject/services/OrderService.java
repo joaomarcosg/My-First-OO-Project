@@ -18,7 +18,7 @@ public class OrderService {
     private double calculateTotal(List<Product> products, Coupon coupon) {
         double total = 0.0;
         for (Product product : products) {
-            total += product.calculateShipping;
+            total += product.calculateShipping();
         }
 
         if (coupon != null) {
@@ -38,7 +38,6 @@ public class OrderService {
         code = String.format(code, today.getYear(), today.getMonthValue(), database.getOrders().length);
 
         newOrder.setCode(code);
-        newOrder.setClient(database.getClient());
         newOrder.setTotal(calculateTotal(newOrder.getProducts(), coupon));
         database.addOrder(newOrder);
         System.out.println("Order saved successfully");
@@ -71,4 +70,5 @@ public class OrderService {
             System.out.println("Order not found");
         }
     }
+
 }
